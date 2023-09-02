@@ -1,5 +1,5 @@
 ### Trade Reporting Engine ###
-Trade Reporting Engine ::
+Trade Reporting Engine :
 A JAVA SpringBoot program that reads a set of Trade Events XML files, extracts certain fields and stores them in database.
 REST Controller has the HTTP request/response configured that reports the filtered trade events in JSON Format.
 
@@ -10,7 +10,7 @@ At the application startup, these XML events are parsed and stored in the h2 dat
 Rest Controller configures the HTTP request/response inorder to fetch the filtered list of trade events as per the requirement 
 from H2 database. Criterias provided are implemented using Java Streams and filter operations and are as follows:
 1. (The seller_party is EMU_BANK and the premium_currency is AUD) or (the seller_party is BISON_BANK and the premium_currency is USD)
-2.	The seller_party and buyer_party must not be anagrams 
+2. The seller_party and buyer_party must not be anagrams 
 Only events that match the above listed criteria should be reported when the REST End point http://localhost:8081/v1/tradeEvents/getFilteredData
 is trigerred.
 
