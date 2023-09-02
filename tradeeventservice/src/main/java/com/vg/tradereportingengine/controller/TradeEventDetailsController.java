@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vg.tradereportingengine.model.TradeEventDetails;
-import com.vg.tradereportingengine.service.TradeEventBuilderService;
+import com.vg.tradereportingengine.service.TradeEventsByCriteriaService;
 
 @RestController
 @RequestMapping("/v1/tradeEvents") 
 public class TradeEventDetailsController {
 	@Autowired 
-	private TradeEventBuilderService tradeEventBuilderService;
+	private TradeEventsByCriteriaService tradeEventsByCriteriaService;
 
 	@GetMapping(path = "/getFilteredData")
 	public ResponseEntity<List<TradeEventDetails>>
 	getTradeEventsByCriteria(){
-		List<TradeEventDetails> response = tradeEventBuilderService.getFilteredData(); 
+		List<TradeEventDetails> response = tradeEventsByCriteriaService.getFilteredData(); 
 		return ResponseEntity.ok(response);
 	}
 }

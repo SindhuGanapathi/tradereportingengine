@@ -15,10 +15,10 @@ import com.vg.tradereportingengine.parser.TradeEventsXMLParser;
 @EnableJpaRepositories("com.vg.tradereportingengine.repository")	
 @EnableAutoConfiguration
 @EnableTransactionManagement
-public class TradeEventServiceApplication {
+public class TradeReportingEngineApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = SpringApplication.run(TradeEventServiceApplication.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(TradeReportingEngineApplication.class, args);
 		TradeEventsXMLParser service = applicationContext.getBean(TradeEventsXMLParser.class);
 		service.fetchTradeEvents();
 	}

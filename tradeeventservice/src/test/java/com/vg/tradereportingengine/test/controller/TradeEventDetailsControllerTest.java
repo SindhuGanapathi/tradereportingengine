@@ -19,12 +19,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.vg.tradereportingengine.TradeEventServiceApplication;
+import com.vg.tradereportingengine.TradeReportingEngineApplication;
 import com.vg.tradereportingengine.model.TradeEventDetails;
 import com.vg.tradereportingengine.repository.TradeEventDetailsRepository;
-import com.vg.tradereportingengine.service.TradeEventBuilderService;
+import com.vg.tradereportingengine.service.TradeEventsByCriteriaService;
 
-@SpringBootTest(classes = {TradeEventServiceApplication.class})
+@SpringBootTest(classes = {TradeReportingEngineApplication.class})
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 @ContextConfiguration
@@ -32,7 +32,7 @@ public class TradeEventDetailsControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	@Mock
-	private TradeEventBuilderService tradeEventBuilderService;
+	private TradeEventsByCriteriaService tradeEventsByCriteriaService;
 	@Mock
 	private TradeEventDetailsRepository tradeEventDetailsRepo;
 
@@ -40,13 +40,13 @@ public class TradeEventDetailsControllerTest {
 	@BeforeEach 
 	public void init() { 
 		MockitoAnnotations.initMocks(this);
-		tradeEventBuilderService = new TradeEventBuilderService(tradeEventDetailsRepo);
+		tradeEventsByCriteriaService = new TradeEventsByCriteriaService(tradeEventDetailsRepo);
 	}
 
 
 	@Test
 	public void shouldReturnStatusOK() throws Exception {
-		when(tradeEventBuilderService.getFilteredData()).thenReturn(filteredData());
+		when(tradeEventsByCriteriaService.getFilteredData()).thenReturn(filteredData());
 		this.mockMvc.perform(get("/v1/events/getFilteredData")).andDo(print()).andExpect(status().isOk());
 	}
 

@@ -13,12 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class TradeEventBuilderService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(TradeEventBuilderService.class);
+public class TradeEventsByCriteriaService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TradeEventsByCriteriaService.class);
 	private final TradeEventDetailsRepository eventDetailRepository;
 	
 	@Autowired 
-	public TradeEventBuilderService(TradeEventDetailsRepository eventDetailRepository) {
+	public TradeEventsByCriteriaService(TradeEventDetailsRepository eventDetailRepository) {
 		this.eventDetailRepository = eventDetailRepository; }
 
 	/*

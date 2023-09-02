@@ -20,20 +20,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.vg.tradereportingengine.TradeEventServiceApplication;
+import com.vg.tradereportingengine.TradeReportingEngineApplication;
 import com.vg.tradereportingengine.model.TradeEventDetails;
 import com.vg.tradereportingengine.parser.TradeEventsXMLParser;
 import com.vg.tradereportingengine.repository.TradeEventDetailsRepository;
-import com.vg.tradereportingengine.service.TradeEventBuilderService;
+import com.vg.tradereportingengine.service.TradeEventsByCriteriaService;
 
-@SpringBootTest(classes = {TradeEventServiceApplication.class})
+@SpringBootTest(classes = {TradeReportingEngineApplication.class})
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
 public class EventBuilderServiceTest {
 	@Autowired
 	private MockMvc mockMvc;
 	@Mock
-	private TradeEventBuilderService tradeEventBuilderService;
+	private TradeEventsByCriteriaService tradeEventsByCriteriaService;
 	private TradeEventsXMLParser tradeEventsXMLParser;
 
 	@Mock
@@ -44,13 +44,13 @@ public class EventBuilderServiceTest {
 	public void init() { 
 		MockitoAnnotations.initMocks(this);
 		tradeEventsXMLParser = new TradeEventsXMLParser(tradeEventDetailsRepo); 
-		tradeEventBuilderService = new TradeEventBuilderService(tradeEventDetailsRepo);
+		tradeEventsByCriteriaService = new TradeEventsByCriteriaService(tradeEventDetailsRepo);
 	}
 
 	@Test
 	public void testGetFilterdData() throws Exception {
 		when(tradeEventDetailsRepo.findByCriteria()).thenReturn(filteredData());
-		List<TradeEventDetails> tradeEventDetailsList =  tradeEventBuilderService.getFilteredData();
+		List<TradeEventDetails> tradeEventDetailsList =  tradeEventsByCriteriaService.getFilteredData();
 		TradeEventDetails tradeEvent = tradeEventDetailsList.get(1);
 		assertEquals(2, tradeEventDetailsList.size());
 		assertEquals("ANZ", tradeEvent.getBuyerReference());
@@ -66,7 +66,7 @@ public class EventBuilderServiceTest {
 		tradeEventDetails.setBuyerReference("UEM");
 		tradeEventDetails.setPremiumCurrency("AUD");
 		tradeEventDetails.setPremiumAmount(200.00F);
-		assertFalse(tradeEventBuilderService.areNotAnagram(tradeEventDetails)); 
+		assertFalse(tradeEventsByCriteriaService.areNotAnagram(tradeEventDetails)); 
 	}
 
 	@Test 
@@ -76,7 +76,7 @@ public class EventBuilderServiceTest {
 		tradeEventDetails.setBuyerReference("MUN_BAKE");
 		tradeEventDetails.setPremiumCurrency("AUD");
 		tradeEventDetails.setPremiumAmount(100.00F);
-		assertTrue(tradeEventBuilderService.areNotAnagram(tradeEventDetails)); 
+		assertTrue(tradeEventsByCriteriaService.areNotAnagram(tradeEventDetails)); 
 	}
 
 

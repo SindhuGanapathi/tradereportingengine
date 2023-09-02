@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
 import com.vg.tradereportingengine.exceptions.CustomException;
 import com.vg.tradereportingengine.model.TradeEventDetails;
 import com.vg.tradereportingengine.repository.TradeEventDetailsRepository;
-import com.vg.tradereportingengine.service.TradeEventBuilderService;
+import com.vg.tradereportingengine.service.TradeEventsByCriteriaService;
 
 import lombok.extern.slf4j.Slf4j;
 
