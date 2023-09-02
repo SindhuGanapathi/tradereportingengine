@@ -43,6 +43,6 @@ is trigerred.
 	Expose Rest API using SpringBoot Rest Controller
 
 
-* Improvements
-  Java reactive programming
+* Improvements: 
+  Java reactive programming, 
   Dynamic filtering in SpringBoot
