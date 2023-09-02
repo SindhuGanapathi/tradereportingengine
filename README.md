@@ -1,7 +1,7 @@
 ### Trade Reporting Engine ###
-Trade Reporting Engine
+Trade Reporting Engine ::
 A JAVA SpringBoot program that reads a set of Trade Events XML files, extracts certain fields and stores them in database.
-REST Controller has the HTTP request configured that reports the filtered trade events in JSON Format.
+REST Controller has the HTTP request/response configured that reports the filtered trade events in JSON Format.
 
 Project Implemetation
 Trade Reporting Engine functionality is achieved by the following steps and resources.
