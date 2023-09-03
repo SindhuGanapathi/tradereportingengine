@@ -47,7 +47,7 @@ public class TradeEventDetailsControllerTest {
 	@Test
 	public void shouldReturnStatusOK() throws Exception {
 		when(tradeEventsByCriteriaService.getFilteredData()).thenReturn(filteredData());
-		this.mockMvc.perform(get("/v1/events/getFilteredData")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(get("/v1/tradeEvents/getFilteredData")).andDo(print()).andExpect(status().isOk());
 	}
 
 	public List<TradeEventDetails> filteredData() {
